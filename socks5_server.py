@@ -220,7 +220,13 @@ class Socks5Server:
                 try:
                     self.buffer_send(sock)
                 except Exception:
-                    self.flush_and_close_sock_pair(sock, str(e))
+                    try:
+                        self.flush_and_close_sock_pair(sock, str(e))
+                    except:UnboundLocalError:
+                            self.flush_and_close_sock_pair(sock, str(e))
+                            
+                        
+                    
 
             for sock in err_ready:
                 if sock == self.server_sock:
