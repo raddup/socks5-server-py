@@ -222,7 +222,7 @@ class Socks5Server:
                 except Exception:
                     try:
                         self.flush_and_close_sock_pair(sock, str(e))
-                    except:UnboundLocalError:
+                    except UnboundLocalError:
                             self.flush_and_close_sock_pair(sock, str(e))
                             
                         
