@@ -220,14 +220,9 @@ class Socks5Server:
                 try:
                     self.buffer_send(sock)
                 except Exception:
-                    try:
-                        self.flush_and_close_sock_pair(sock, str(e))
-                    except UnboundLocalError:
-                            self.flush_and_close_sock_pair(sock, str(e))
+                    pass
+                   
                             
-                        
-                    
-
             for sock in err_ready:
                 if sock == self.server_sock:
                     self.logger.critical('Error in server socket; closing down')
